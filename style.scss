@@ -1,0 +1,394 @@
+@mixin breakpoint-min($bp:0) {
+    @media (min-width: $bp) {
+        @content
+    }
+}
+
+;
+
+@mixin breakpoint-max($bp:0) {
+    @media (max-width: $bp) {
+        @content
+    }
+}
+
+;
+
+@mixin flex($align:center, $direction:row, $justify:center) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-direction: $direction;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&display=swap');
+
+$barlow:'Barlow',
+sans-serif;
+$fraunces:'Fraunces',
+serif;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    a {
+        font-size: inherit;
+        font-weight: inherit;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    header {
+        --main: rgb(61, 190, 255);
+        --text-fade: rgb(240, 240, 240);
+        --text-bold: rgb(255, 255, 255);
+        height: 100vh;
+        background-color: var(--main);
+        padding: 2rem;
+        position: relative;
+        background-image: url("./images/desktop/image-header.jpg");
+        background-position: center bottom;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        div {
+            @include flex($justify:space-between);
+
+            >a {
+                width: 200px;
+                height: 40px;
+
+                img {
+                    all: inherit;
+                }
+            }
+
+            nav {
+                @include flex();
+                gap: 50px;
+                font-family: $barlow;
+
+                a {
+                    color: var(--text-fade);
+                    font-weight: 600;
+                    font-size: 1.2rem;
+
+                    &:last-of-type {
+                        padding-block: 20px;
+                        padding-inline: 30px;
+                        color: black;
+                        font-family: $fraunces;
+                        text-transform: uppercase;
+                        border-radius: 50px;
+                        background-color: white;
+                    }
+                }
+            }
+        }
+
+        h1 {
+            text-align: center;
+            font-family: $fraunces;
+            font-weight: 900;
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1rem;
+            margin-top: 10%;
+            color: var(--text-bold);
+        }
+
+        span {
+            @include flex;
+            margin-top: 10%;
+            animation: infinite 2s jump;
+
+            @keyframes jump {
+
+                0%,
+                100% {
+                    transform: translateY(5px);
+                }
+
+                50% {
+                    transform: translateY(-5px);
+                }
+            }
+        }
+    }
+
+    main {
+        --text-fade: rgb(140, 140, 140);
+        @include flex($direction:column);
+        width: 100%;
+
+        section {
+            width: inherit;
+
+            &:nth-of-type(1) {
+                article {
+                    @include flex;
+                    width: inherit;
+
+                    div {
+                        height: 60vh;
+                        width: 50%;
+                        @include flex($direction:column, $align:flex-start);
+                        padding: min(7%, 8rem);
+
+                        @include breakpoint-min(1845px) {
+                            padding: 200px;
+                            height: 70vh;
+                        }
+
+                        h3 {
+                            font-family: $fraunces;
+                            font-size: 2.5rem;
+                        }
+
+                        p {
+                            font-family: $barlow;
+                            font-size: 1.15rem;
+                            color: var(--text-fade);
+                            padding-block: 2.5rem;
+                            line-height: 1.75rem;
+                        }
+
+                        a {
+                            @include flex;
+                            text-transform: uppercase;
+                            font-family: $fraunces;
+                            position: relative;
+                        }
+                    }
+
+                    &:nth-of-type(1) {
+                        div {
+                            a::after {
+                                content: "";
+                                position: absolute;
+                                width: calc(100% + 10px);
+                                height: 8px;
+                                border-radius: 10px;
+                                bottom: -1.5px;
+                                background-color: rgb(250, 212, 0);
+                                z-index: -1;
+                            }
+
+                            &:nth-of-type(2) {
+                                background-image: url("./images/desktop/image-transform.jpg");
+                                background-size: cover;
+                                background-position: center center;
+                            }
+                        }
+                    }
+
+                    &:nth-of-type(2) {
+                        flex-direction: row-reverse;
+
+                        div {
+                            a::after {
+                                content: "";
+                                position: absolute;
+                                width: calc(100% + 10px);
+                                height: 8px;
+                                border-radius: 10px;
+                                bottom: -1.5px;
+                                background-color: rgb(254, 120, 103);
+                                z-index: -1;
+                            }
+
+                            &:nth-of-type(2) {
+                                background-image: url("./images/desktop/image-stand-out.jpg");
+                                background-size: cover;
+                                background-position: center center;
+                            }
+                        }
+                    }
+
+                    &:last-of-type {
+                        div {
+                            align-items: center;
+                            justify-content: flex-end;
+                            padding-bottom: 1rem;
+
+                            p {
+                                text-align: center;
+                                width: 80%;
+
+                                @include breakpoint-min(1845px) {
+                                    width: 70%;
+                                }
+                            }
+
+                            &:nth-of-type(1) {
+                                * {
+                                    color: rgb(37, 86, 75);
+                                }
+
+                                background-image: url("./images/desktop/image-graphic-design.jpg");
+                                background-size: cover;
+                                background-position: center center;
+                            }
+
+                            &:nth-of-type(2) {
+                                * {
+                                    color: rgb(25, 83, 107);
+                                }
+
+                                background-image: url("./images/desktop/image-photography.jpg");
+                                background-size: cover;
+                                background-position: center center;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &:nth-of-type(2) {
+                height: 80vh;
+                padding: 7rem;
+                @include flex($direction:column);
+                gap: 7rem;
+
+                h2 {
+                    font-size: 1.8rem;
+                    font-weight: 900;
+                    letter-spacing: 5px;
+                    text-transform: uppercase;
+                    font-family: $fraunces;
+                    color: var(--text-fade);
+                }
+
+                >div {
+                    @include flex;
+                    gap: 1rem;
+
+                    article {
+                        @include flex($direction:column);
+                        gap: 5rem;
+
+                        img {
+                            height: 100px;
+                            width: 100px;
+                            border-radius: 100%;
+                        }
+
+                        p {
+                            font-family: $barlow;
+                            text-align: center;
+                            font-size: 1.25rem;
+                            width: 90%;
+                            color: rgb(101, 104, 109);
+                        }
+
+                        div {
+                            @include flex($direction:column);
+                            gap: .8rem;
+
+                            span {
+                                &:nth-of-type(1) {
+                                    font-family: $fraunces;
+                                    font-size: 1.35rem;
+                                    font-weight: 900;
+                                }
+
+                                &:nth-of-type(2) {
+                                    color: var(--text-fade);
+                                    font-size: 1.15rem;
+                                    font-family: $barlow;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    footer {
+        height: 90vh;
+
+        section {
+            @include flex;
+
+            &:nth-of-type(1) {
+                height: 60%;
+
+                div {
+                    @include flex($justify:space-evenly);
+                    height: 100%;
+                    width: 30%;
+
+                    &:nth-of-type(1) {
+                        background-image: url("./images/desktop/image-gallery-milkbottles.jpg");
+                        background-size: cover;
+                        background-position: center center;
+                    }
+
+                    &:nth-of-type(2) {
+                        background-image: url("./images/desktop/image-gallery-orange.jpg");
+                        background-size: cover;
+                        background-position: center center;
+                    }
+
+                    &:nth-of-type(3) {
+                        background-image: url("./images/desktop/image-gallery-cone.jpg");
+                        background-size: cover;
+                        background-position: center center;
+                    }
+
+                    &:nth-of-type(4) {
+                        background-image: url("./images/desktop/image-gallery-sugarcubes.jpg");
+                        background-size: cover;
+                        background-position: center center;
+                    }
+                }
+            }
+
+            &:nth-of-type(2) {
+                color: rgb(69, 140, 126);
+                background-color: rgb(144, 212, 197);
+                height: 40%;
+                flex-direction: column;
+
+                ul {
+                    list-style-type: none;
+                    @include flex;
+
+                    li {
+                        font-size: 1.3rem;
+                        font-family: $barlow;
+                        text-transform: capitalize;
+                        cursor: pointer;
+                    }
+
+                    &:nth-of-type(1) {
+                        gap: 3rem;
+                        margin-top: 2.5rem;
+                        margin-bottom: 6rem;
+                    }
+
+                    &:nth-of-type(2) {
+                        gap: 1.5rem;
+
+                        img {
+                            width: 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
