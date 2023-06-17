@@ -6,10 +6,14 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Frontend Mentor | Sunnyside agency landing page</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+		integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<style>
 		.attribution {
 			font-size: 11px;
 			text-align: center;
+			background-color: hsl(167, 44%, 70%);
 		}
 
 		.attribution a {
@@ -24,7 +28,11 @@
 			<a href="#">
 				<img src="./images/logo.svg" alt="logo">
 			</a>
+			<label for="menu">
+				<i class="fa-solid fa-bars"></i>
+			</label>
 
+			<input type="checkbox" id="menu">
 			<nav>
 				<a href="#">About</a>
 				<a href="#services">Services</a>
@@ -33,7 +41,7 @@
 			</nav>
 		</div>
 
-		<h1>
+		<h1 id="about">
 			We are creatives
 		</h1>
 		<span>
@@ -68,8 +76,7 @@
 
 					<a href="#">Learn more</a>
 				</div>
-				<div>
-				</div>
+				<div></div>
 			</article>
 
 			<article>
@@ -142,7 +149,7 @@
 			<div></div>
 			<div></div>
 		</section>
-		<section>
+		<section id="contact">
 			<span>
 				<svg width="124" height="24" xmlns="http://www.w3.org/2000/svg">
 					<path
@@ -156,10 +163,10 @@
 				<li>projects</li>
 			</ul>
 			<ul>
-				<li><img src="./images/icon-facebook.svg" alt=""></li>
-				<li><img src="./images/icon-instagram.svg" alt=""></li>
-				<li><img src="./images/icon-twitter.svg" alt=""></li>
-				<li><img src="./images/icon-pinterest.svg" alt=""></li>
+				<li><i class="fa-brands fa-square-facebook"></i></li>
+				<li><i class="fa-brands fa-instagram"></i></li>
+				<li><i class="fa-brands fa-twitter"></i></li>
+				<li><i class="fa-brands fa-pinterest"></i></li>
 			</ul>
 		</section>
 	</footer>

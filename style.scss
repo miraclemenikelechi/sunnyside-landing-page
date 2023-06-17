@@ -34,6 +34,7 @@ serif;
     padding: 0;
     box-sizing: border-box;
     font-size: 16px;
+    // background: rgb(25, 183, 100, .1) !important;
 }
 
 html {
@@ -63,8 +64,13 @@ body {
         background-size: cover;
         background-repeat: no-repeat;
 
+        @include breakpoint-max(1440px) {
+            background-image: url("./images/mobile/image-header.jpg");
+        }
+
         div {
             @include flex($justify:space-between);
+            position: relative;
 
             >a {
                 width: 200px;
@@ -72,6 +78,34 @@ body {
 
                 img {
                     all: inherit;
+                }
+
+                @include breakpoint-max(1440px) {
+                    width: 125px;
+                    height: 1.5rem;
+                }
+            }
+
+            >label {
+                display: none;
+
+                i {
+                    font-size: 1.5rem;
+                    color: white;
+                }
+
+                @include breakpoint-max(1440px) {
+                    display: block;
+                }
+            }
+
+            >input {
+                display: none;
+
+                @include breakpoint-max(1440px) {
+                    &:checked+nav {
+                        @include flex($direction:column);
+                    }
                 }
             }
 
@@ -93,6 +127,42 @@ body {
                         text-transform: uppercase;
                         border-radius: 50px;
                         background-color: white;
+                        transition: ease-in-out .25s all;
+
+                        @include breakpoint-min(1440px) {
+                            &:hover {
+                                color: var(--text-bold);
+                                background-color: rgb(255, 255, 255, .3);
+                            }
+                        }
+                    }
+                }
+
+                @include breakpoint-max(1440px) {
+                    display: none;
+                    position: absolute;
+                    background-color: var(--text-bold);
+                    top: 5rem;
+                    width: 100%;
+                    padding-block: 3rem;
+                    z-index: 1;
+
+                    a {
+                        color: rgb(140, 140, 140);
+
+                        &:last-of-type {
+                            background-color: rgb(250, 212, 0);
+
+                        }
+                    }
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: -40px;
+                        right: 0;
+                        border-top: 50px solid transparent;
+                        border-right: 50px solid var(--text-bold);
                     }
                 }
             }
@@ -102,11 +172,17 @@ body {
             text-align: center;
             font-family: $fraunces;
             font-weight: 900;
-            font-size: 3.5rem;
+            font-size: clamp(.5rem, 2rem + 1.667vw, 3.5rem);
             text-transform: uppercase;
             letter-spacing: 1rem;
             margin-top: 10%;
             color: var(--text-bold);
+
+            @include breakpoint-max(1440px) {
+                font-size: 2rem;
+                letter-spacing: .5rem;
+                padding-top: 1rem;
+            }
         }
 
         span {
@@ -152,6 +228,13 @@ body {
                             height: 70vh;
                         }
 
+                        @include breakpoint-max(1440px) {
+                            width: 100%;
+                            text-align: center;
+                            align-items: center;
+                            height: 65vh;
+                        }
+
                         h3 {
                             font-family: $fraunces;
                             font-size: 2.5rem;
@@ -174,6 +257,10 @@ body {
                     }
 
                     &:nth-of-type(1) {
+                        @include breakpoint-max(1440px) {
+                            flex-direction: column-reverse;
+                        }
+
                         div {
                             a::after {
                                 content: "";
@@ -190,12 +277,21 @@ body {
                                 background-image: url("./images/desktop/image-transform.jpg");
                                 background-size: cover;
                                 background-position: center center;
+
+                                @include breakpoint-max(1440px) {
+                                    height: 50vh;
+                                    background-image: url("./images/mobile/image-transform.jpg");
+                                }
                             }
                         }
                     }
 
                     &:nth-of-type(2) {
                         flex-direction: row-reverse;
+
+                        @include breakpoint-max(1440px) {
+                            flex-direction: column-reverse;
+                        }
 
                         div {
                             a::after {
@@ -213,6 +309,11 @@ body {
                                 background-image: url("./images/desktop/image-stand-out.jpg");
                                 background-size: cover;
                                 background-position: center center;
+
+                                @include breakpoint-max(1440px) {
+                                    height: 50vh;
+                                    background-image: url("./images/mobile/image-stand-out.jpg");
+                                }
                             }
                         }
                     }
@@ -230,6 +331,11 @@ body {
                                 @include breakpoint-min(1845px) {
                                     width: 70%;
                                 }
+
+                                @include breakpoint-max(1440px) {
+                                    padding-top: 1rem;
+                                    width: 100%;
+                                }
                             }
 
                             &:nth-of-type(1) {
@@ -240,6 +346,11 @@ body {
                                 background-image: url("./images/desktop/image-graphic-design.jpg");
                                 background-size: cover;
                                 background-position: center center;
+
+                                @include breakpoint-max(1440px) {
+                                    height: 90vh;
+                                    background-image: url("./images/mobile/image-graphic-design.jpg");
+                                }
                             }
 
                             &:nth-of-type(2) {
@@ -250,8 +361,17 @@ body {
                                 background-image: url("./images/desktop/image-photography.jpg");
                                 background-size: cover;
                                 background-position: center center;
+
+                                @include breakpoint-max(1440px) {
+                                    height: 90vh;
+                                    background-image: url("./images/mobile/image-photography.jpg");
+                                }
                             }
                         }
+                    }
+
+                    @include breakpoint-max(1440px) {
+                        flex-direction: column;
                     }
                 }
             }
@@ -262,6 +382,11 @@ body {
                 @include flex($direction:column);
                 gap: 7rem;
 
+                @include breakpoint-max(1440px) {
+                    height: 100%;
+                    padding: 3rem;
+                }
+
                 h2 {
                     font-size: 1.8rem;
                     font-weight: 900;
@@ -269,11 +394,19 @@ body {
                     text-transform: uppercase;
                     font-family: $fraunces;
                     color: var(--text-fade);
+
+                    @include breakpoint-max(1440px) {
+                        font-size: clamp(0.5rem, 0.5rem + 0.8333vw, 1.25rem);
+                    }
                 }
 
                 >div {
                     @include flex;
                     gap: 1rem;
+
+                    @include breakpoint-max(1440px) {
+                        flex-direction: column;
+                    }
 
                     article {
                         @include flex($direction:column);
@@ -319,6 +452,7 @@ body {
 
     footer {
         height: 90vh;
+        --text-bold: rgb(255, 255, 255);
 
         section {
             @include flex;
@@ -355,6 +489,15 @@ body {
                         background-position: center center;
                     }
                 }
+
+                @include breakpoint-max(1440px) {
+                    flex-wrap: wrap;
+
+                    div {
+                        height: 50%;
+                        flex: 1 1 50%;
+                    }
+                }
             }
 
             &:nth-of-type(2) {
@@ -372,6 +515,11 @@ body {
                         font-family: $barlow;
                         text-transform: capitalize;
                         cursor: pointer;
+                        transition: ease-in-out .15s all;
+
+                        &:hover {
+                            color: var(--text-bold);
+                        }
                     }
 
                     &:nth-of-type(1) {
@@ -383,8 +531,8 @@ body {
                     &:nth-of-type(2) {
                         gap: 1.5rem;
 
-                        img {
-                            width: 25px;
+                        i {
+                            font-size: 1.5rem;
                         }
                     }
                 }
